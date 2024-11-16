@@ -1,0 +1,38 @@
+# Node.js Basics
+node -v                      # Check the installed Node.js version.
+npm -v                       # Check the installed NPM (Node Package Manager) version.
+node <file_name.js>          # Run a JavaScript file using Node.js.
+node                         # Open Node.js interactive REPL for testing code snippets (exit with .exit or Ctrl+C twice).
+
+# NPM Project Initialization
+npm init -y                  # Initialize a new Node.js project with default settings (creates package.json).
+
+# Package Management
+npm install <package_name>   # Install a package locally (adds it to node_modules and package.json dependencies).
+npm install -g <package_name> # Install a package globally for use across all projects.
+npm install <package_name> --save-dev # Install a package as a dev dependency (used during development only).
+npm uninstall <package_name> # Remove a package and update package.json.
+npm list                     # Display locally installed packages and their versions.
+npm list -g                  # Display globally installed packages and their versions.
+npm update                   # Update all locally installed packages to the latest version.
+
+# Scripts (package.json)
+npm run <script_name>        # Run a custom script defined in package.json (e.g., start, test, build).
+npm run start                # Run the "start" script, usually to start the app.
+
+# Debugging
+node inspect <file_name.js>  # Start debugging a Node.js script.
+node --inspect-brk <file_name.js> # Debug and pause execution at the very start of the script.
+node --inspect <file_name.js> # Debug using Chrome DevTools (open chrome://inspect to connect).
+
+# Environment Variables
+NODE_ENV=production node app.js # Set an environment variable (e.g., NODE_ENV) and run the script.
+
+# Security and Maintenance
+npm audit                    # Check for vulnerabilities in installed packages.
+npm audit fix                # Fix vulnerabilities automatically when possible.
+rm -rf node_modules          # Remove the node_modules folder (used for cleanup or reinstallation).
+npm cache clean --force      # Clear the NPM cache to fix potential package installation issues.
+
+# Miscellaneous
+npm install                  # Install all dependencies listed in package.json.
