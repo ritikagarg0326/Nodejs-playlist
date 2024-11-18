@@ -1,0 +1,16 @@
+#Node.js doesn’t replace databases—it provides a way to communicate with them. You'll use libraries or ORMs (Object-Relational Mappers) to connect Node.js to databases.
+Examples: For SQL
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'mydb'
+});
+
+connection.connect();
+connection.query('SELECT * FROM users', (err, results) => {
+  if (err) throw err;
+  console.log(results);
+});
+connection.end();
