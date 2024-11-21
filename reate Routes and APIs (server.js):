@@ -1,0 +1,35 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const db = require('./database/db');
+
+const app = express();
+const PORT = 3000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// API Endpoints
+// Fetch all users
+app.get('/users', (req, res) => {
+    db.query('SELECT * FROM users', (err, results) => {
+        if (err) throw err;
+        res.json(results);
+    });
+});
+
+// Add a new user
+app.post('/users', (req, res) => {
+    const { username, password } = req.body;
+    const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
+    db.query(query, [username, password], (err) => {
+        if (err) throw err;
+        res.json({ message: 'User added successfully!' });
+    });
+});
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
